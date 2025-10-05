@@ -1,7 +1,7 @@
 import numpy as np
 from parking_env import ParkingEnv
 
-env = ParkingEnv(N=5, parking_spots=[(4,4)], obstacles=[(2,2)])
+env = ParkingEnv(N=10, parking_spots=[(8,6),(4,3),(6,9)], obstacles=[(2,2),(5,6)], occupancy_init=[0,0,1])
 n_actions = env.action_space.n
 state_size = len(env._get_obs())
 

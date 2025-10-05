@@ -1,8 +1,11 @@
 import numpy as np
 from parking_env import ParkingEnv
 import matplotlib.pyplot as plt
+from parking_env import create_parking_env
 
-env = ParkingEnv(N=5, parking_spots=[(4,4),(2,3)], obstacles=[(1,2)],occupancy_init=[0,1])
+env = ParkingEnv()
+env = create_parking_env()
+env.random_occupancy =True
 n_actions = env.action_space.n
 
 # Q-table dạng dict với key = state_id (int)

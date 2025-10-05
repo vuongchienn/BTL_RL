@@ -1,7 +1,9 @@
 import numpy as np
 from parking_env import ParkingEnv
+from parking_env import create_parking_env
 
-env = ParkingEnv(N=5, parking_spots=[(4,4),(3,4)], obstacles=[(2,2)], occupancy_init=[1,0])
+env = ParkingEnv()
+env = create_parking_env()
 n_actions = env.action_space.n
 
 Q = {}
