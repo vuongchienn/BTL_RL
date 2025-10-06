@@ -4,6 +4,7 @@ from parking_env import create_parking_env
 
 env = ParkingEnv()
 env = create_parking_env()
+env.random_occupancy = True
 n_actions = env.action_space.n
 
 Q = {}
@@ -63,24 +64,25 @@ env.close()
 #hien thi ket qua
 import matplotlib.pyplot as plt
 
-def show_q_table(Q, N=5):
+def show_q_table(Q, env, N=5):
     import matplotlib.pyplot as plt
 
     fig, ax = plt.subplots(figsize=(10, 5))
     ax.axis("off")
 
     rows = []
-    for i, (s, q_vals) in enumerate(Q.items()):
-        state_id = s[0] * N + s[1]   # ánh xạ (x,y) -> ID
-        rows.append([f"{state_id} ({s})"] + [f"{q:.2f}" for q in q_vals])
+    for i, (state, q_vals) in enumerate(Q.items()):
+        state_id = env._state_to_id(state)  # Ánh xạ state → state_id
+        rows.append([str(state_id)] + [f"{q:.2f}" for q in q_vals])
         if i >= 15:
             break
 
-    col_labels = ["State (ID, xy)", "Up", "Down", "Left", "Right", "Park"]
+    col_labels = ["StateID", "Up", "Down", "Left", "Right", "Park"]
     table = ax.table(cellText=rows, colLabels=col_labels, loc="center")
     table.auto_set_font_size(False)
     table.set_fontsize(8)
     table.scale(1.2, 1.2)
 
     plt.show()
+
 show_q_table(Q)
