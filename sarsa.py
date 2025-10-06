@@ -86,3 +86,14 @@ def show_q_table(Q):
     plt.show()
 
 show_q_table(Q)
+
+
+import csv
+
+with open("q_table.csv", "w", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["StateID", "Up", "Down", "Left", "Right", "Park"])  # header
+    for sid, q_vals in Q.items():
+        writer.writerow([sid] + list(q_vals))
+
+print("✅ Đã lưu Q-table vào q_table.csv")
