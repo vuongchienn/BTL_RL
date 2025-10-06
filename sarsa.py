@@ -64,7 +64,7 @@ env.close()
 #hien thi ket qua
 import matplotlib.pyplot as plt
 
-def show_q_table(Q, env, N=5):
+def show_q_table(Q):
     import matplotlib.pyplot as plt
 
     fig, ax = plt.subplots(figsize=(10, 5))

@@ -57,8 +57,7 @@ while not done:
     state, reward, done, _ = env.step(action)
     env.render()
 print("Kết thúc episode với reward:", reward)
-plt.close('all')
-
+env.close()
 
 # Hiển thị Q-table trên giao diện
 def show_q_table(Q):

@@ -30,9 +30,8 @@ class ParkingEnv(gym.Env):
 
 
     def _state_to_id(self, state):
-        x, y, *occ = state
-        occ_num = int("".join(map(str, occ)), 2) if occ else 0
-        return y * self.N + x + occ_num * (self.N * self.N)
+        return tuple(state)
+
     
     def reset(self):
         self.pos_agent = (4,8)
@@ -98,7 +97,7 @@ class ParkingEnv(gym.Env):
 
 
     def render(self, mode="human"):
-        cell_size = 20  # 👈 chỉnh số này (2,3,5...) để ô vuông to lên
+        cell_size = 2 # 👈 chỉnh số này (2,3,5...) để ô vuông to lên
         self.ax.clear()
         self.ax.set_xlim(-0.5 * cell_size, (self.N - 0.5) * cell_size)
         self.ax.set_ylim(-0.5 * cell_size, (self.N - 0.5) * cell_size)
